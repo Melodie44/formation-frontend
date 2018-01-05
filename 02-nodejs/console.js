@@ -14,15 +14,15 @@ const rl = readline.createInterface({
 
   rl.question('', (answer) => {
       switch(answer){
-          case "1" : console.log(service.listerTousLesPresentateurs()); break;
-          case "2" : console.log(service.listerTopPresentateurs()); break;
-          case "3" : console.log(service.listerToutesLesSessions()); break;
+          case "1" : service.listerTousLesPresentateurs().forEach((p) => {for(variable in p){console.log(variable, ": ",p[variable])}}); break;
+          case "2" : service.listerTopPresentateurs().forEach((p) => {for(variable in p){console.log(variable, ": ",p[variable])}}); break;
+          case "3" : service.listerToutesLesSessions().forEach((s) => {for(variable in s){console.log(variable, ": ",s[variable])}}); break;
           case "4" : {
             rl.question('Id de la session recherchée: ', (answer2) =>{
                 console.log(service.trouverUneSession(answer2));
               })
               break;
           }
-          rl.close();
-      }        
+      }
+      rl.close();        
   })
